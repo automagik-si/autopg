@@ -1,16 +1,16 @@
 <div align="center">
-  <h1>pgserve</h1>
+  <h1>autopg</h1>
   <p><strong>Embedded PostgreSQL Server with TRUE Concurrent Connections</strong></p>
 
   <p>
-    <a href="https://www.npmjs.com/package/pgserve"><img src="https://img.shields.io/npm/v/pgserve?style=flat-square&color=00D9FF" alt="npm version"></a>
+    <a href="https://github.com/automagik-si/autopg/releases"><img src="https://img.shields.io/github/v/release/automagik-si/autopg?style=flat-square&color=00D9FF" alt="GitHub release"></a>
     <img src="https://img.shields.io/badge/node-%3E%3D18-green?style=flat-square" alt="Node.js">
     <img src="https://img.shields.io/badge/PostgreSQL-18-blue?style=flat-square" alt="PostgreSQL">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"></a>
     <a href="https://discord.gg/xcW8c7fF3R"><img src="https://img.shields.io/discord/1095114867012292758?style=flat-square&color=00D9FF&label=discord" alt="Discord"></a>
   </p>
 
-  <p><em>npx pgserve and it just works, no credentials needed. Zero config, auto-provision databases, unlimited concurrent connections.</em></p>
+  <p><em>Run <code>autopg</code> and it just works, no credentials needed. Zero config, auto-provision databases, unlimited concurrent connections.</em></p>
 
   <p>
     <a href="#-quick-start">Quick Start</a> •
@@ -26,7 +26,8 @@
 ## Quick Start
 
 ```bash
-npx pgserve
+curl -fsSL https://raw.githubusercontent.com/automagik-si/autopg/main/install.sh | bash
+autopg
 ```
 
 Connect from any PostgreSQL client — databases auto-create on first connection:
@@ -37,13 +38,11 @@ psql postgresql://localhost:8432/myapp
 
 > Note: v2 default is the Unix socket — see [Daemon mode](#daemon-mode). The TCP form above is the v1 compat path.
 
-> **Naming.** The npm package stays `pgserve`. The CLI now also ships as
-> `autopg` — both bins route to the same dispatcher. Use `autopg` for the
-> new console (`autopg ui`) and configuration surface (`autopg config`,
-> `autopg restart`); `pgserve <subcommand>` keeps working as a forever
-> alias. Settings live at `~/.autopg/settings.json` and are migrated
-> from `~/.pgserve/` automatically on first run. See
-> [Console](#console-autopg-ui) and [Configuration](#configuration).
+> **Naming.** The project and CLI are `autopg` (formerly `pgserve`).
+> Settings live at `~/.autopg/settings.json` and are migrated from
+> `~/.pgserve/` automatically on first run. The last package published to
+> npm is `pgserve@2.6.10`, which predates this tree; use the installer
+> above. See [Console](#console-autopg-ui) and [Configuration](#configuration).
 
 <br>
 
@@ -60,7 +59,7 @@ psql postgresql://localhost:8432/myapp
   </tr>
   <tr>
     <td><b>Zero Config</b></td>
-    <td>Just run <code>pgserve</code>, connect to any database name</td>
+    <td>Just run <code>autopg</code>, connect to any database name</td>
   </tr>
   <tr>
     <td><b>Auto-Provision</b></td>
@@ -102,7 +101,7 @@ psql postgresql://localhost:8432/myapp
 
 ```bash
 # Canonical install — signed binary from GitHub Releases
-curl -fsSL https://raw.githubusercontent.com/automagik-dev/autopg/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/automagik-si/autopg/main/install.sh | bash
 
 # Pinned version
 PGSERVE_VERSION=v2.6.0 curl -fsSL .../install.sh | bash
@@ -112,7 +111,7 @@ PGSERVE_VERSION=v2.6.0 curl -fsSL .../install.sh | bash
 
 ### Windows
 
-Download `pgserve-windows-x64.exe` from [GitHub Releases](https://github.com/automagik-dev/autopg/releases).
+Download `pgserve-windows-x64.exe` from [GitHub Releases](https://github.com/automagik-si/autopg/releases).
 
 Double-click to run, or use CLI:
 
@@ -132,7 +131,7 @@ this README and in `console/` use `autopg`.
 ```
 autopg [options]                       # foreground server (alias: pgserve)
 autopg daemon                          # long-lived background daemon
-autopg install [--port N] [--data P]   # register pgserve under pm2
+autopg install [--port N] [--data P]   # register autopg under pm2
 autopg uninstall [--yes]               # remove from pm2 (data dir kept); confirms first
 autopg status                          # readiness + pm2 state + on-disk config snapshot
 autopg url | autopg port               # canonical connection string / port
@@ -934,9 +933,9 @@ Contributions welcome! Fork the repo, create a feature branch, add tests, and su
     <b>MIT License</b> — Copyright (c) 2025 Namastex Labs
   </p>
   <p>
-    <a href="https://github.com/automagik-dev/autopg">GitHub</a> •
+    <a href="https://github.com/automagik-si/autopg">GitHub</a> •
     <a href="https://www.npmjs.com/package/pgserve">npm</a> •
-    <a href="https://github.com/automagik-dev/autopg/issues">Issues</a>
+    <a href="https://github.com/automagik-si/autopg/issues">Issues</a>
   </p>
   <p>
     Made with love by <a href="https://namastex.ai">Namastex Labs</a>
